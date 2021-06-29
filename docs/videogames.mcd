@@ -1,0 +1,11 @@
+posts, 11 REVIEW, 0N USER
+REVIEW: title, content, author, publication date, display rating, gameplay rating, lifetime rating
+relates to, 0N VIDEOGAME, 11 REVIEW
+
+USER: user name
+:
+VIDEOGAME: name, editor
+
+:
+PLATFORM: name, publisher
+has, 0N PLATFORM, 11 VIDEOGAME
