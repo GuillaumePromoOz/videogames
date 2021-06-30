@@ -70,8 +70,9 @@ class VideogameController extends AbstractController
             return $this->json($message, Response::HTTP_NOT_FOUND);
         }
 
-        return $this->json($videogame, 200, [], ['groups' => [
-            'videogames_browse',
+        $reviews = $videogame->getReviews();
+
+        return $this->json($reviews, 200, [], ['groups' => [
             'videogames_read_item',
         ]]);
     }

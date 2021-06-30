@@ -17,24 +17,27 @@ class Videogame
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("videogames_browse")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=50)
      * @Groups("videogames_browse")
+     * @Groups("reviews_browse")
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=25)
      * @Groups("videogames_browse")
+     * @Groups("reviews_browse")
      */
     private $editor;
 
     /**
      * @ORM\Column(type="datetime")
-     * @Groups("videogames_browse") 
+     * @Groups("videogames_browse")
      */
     private $createdAt;
 
@@ -55,6 +58,7 @@ class Videogame
     /**
      * @ORM\ManyToOne(targetEntity=Platform::class, inversedBy="videogames")
      * @Groups("videogames_browse")
+     * @Groups("reviews_browse")
      */
     private $platform;
 

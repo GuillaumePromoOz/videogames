@@ -22,6 +22,7 @@ class Platform
     /**
      * @ORM\Column(type="string", length=25)
      * @Groups("videogames_browse")
+     * @Groups("reviews_browse")
      */
     private $name;
 

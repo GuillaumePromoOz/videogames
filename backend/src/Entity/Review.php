@@ -21,56 +21,56 @@ class Review
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups("videogames_read_item")
-     * @Groups("review_browse")
+     * @Groups("reviews_browse")
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
      * @Groups("videogames_read_item")
-     * @Groups("review_browse")
+     * @Groups("reviews_browse")
      */
     private $content;
 
     /**
      * @ORM\Column(type="string", length=50)
      * @Groups("videogames_read_item")
-     * @Groups("review_browse")
+     * @Groups("reviews_browse")
      */
     private $author;
 
     /**
      * @ORM\Column(type="datetime")
      * @Groups("videogames_read_item")
-     * @Groups("review_browse")
+     * @Groups("reviews_browse")
      */
     private $publicationDate;
 
     /**
      * @ORM\Column(type="smallint")
      * @Groups("videogames_read_item")
-     * @Groups("review_browse")
+     * @Groups("reviews_browse")
      */
     private $displayRating;
 
     /**
      * @ORM\Column(type="smallint")
      * @Groups("videogames_read_item")
-     * @Groups("review_browse")
+     * @Groups("reviews_browse")
      */
     private $gameplayRating;
 
     /**
      * @ORM\Column(type="smallint")
      * @Groups("videogames_read_item")
-     * @Groups("review_browse")
+     * @Groups("reviews_browse")
      */
     private $storyRating;
 
     /**
      * @ORM\Column(type="smallint")
      * @Groups("videogames_read_item")
-     * @Groups("review_browse")
+     * @Groups("reviews_browse")
      */
     private $lifetimeRating;
 
@@ -78,7 +78,9 @@ class Review
      * Many reviews to one videogame
      * 
      * @ORM\ManyToOne(targetEntity=Videogame::class, inversedBy="reviews")
-     * @Groups("review_browse")
+     * @Groups("reviews_browse")
+     * @Groups("videogames_browse")
+     * 
      */
     private $videogame;
 
