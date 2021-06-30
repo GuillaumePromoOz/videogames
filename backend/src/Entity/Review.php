@@ -60,16 +60,6 @@ class Review
     private $lifetimeRating;
 
     /**
-     * @ORM\Column(type="datetime")
-     */
-    private $createdAt;
-
-    /**
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    private $updatedAt;
-
-    /**
      * Many reviews to one videogame
      * 
      * @ORM\ManyToOne(targetEntity=Videogame::class, inversedBy="reviews")
@@ -178,30 +168,6 @@ class Review
     public function setLifetimeRating(int $lifetimeRating): self
     {
         $this->lifetimeRating = $lifetimeRating;
-
-        return $this;
-    }
-
-    public function getCreatedAt(): ?\DateTimeInterface
-    {
-        return $this->createdAt;
-    }
-
-    public function setCreatedAt(\DateTimeInterface $createdAt): self
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    public function getUpdatedAt(): ?\DateTimeInterface
-    {
-        return $this->updatedAt;
-    }
-
-    public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
-    {
-        $this->updatedAt = $updatedAt;
 
         return $this;
     }
