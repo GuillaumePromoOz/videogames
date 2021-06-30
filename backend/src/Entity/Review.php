@@ -2,10 +2,9 @@
 
 namespace App\Entity;
 
-use App\Repository\ReviewRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=ReviewRepository::class)
@@ -21,41 +20,57 @@ class Review
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("videogames_read_item")
+     * @Groups("review_browse")
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups("videogames_read_item")
+     * @Groups("review_browse")
      */
     private $content;
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Groups("videogames_read_item")
+     * @Groups("review_browse")
      */
     private $author;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups("videogames_read_item")
+     * @Groups("review_browse")
      */
     private $publicationDate;
 
     /**
      * @ORM\Column(type="smallint")
+     * @Groups("videogames_read_item")
+     * @Groups("review_browse")
      */
     private $displayRating;
 
     /**
      * @ORM\Column(type="smallint")
+     * @Groups("videogames_read_item")
+     * @Groups("review_browse")
      */
     private $gameplayRating;
 
     /**
      * @ORM\Column(type="smallint")
+     * @Groups("videogames_read_item")
+     * @Groups("review_browse")
      */
     private $storyRating;
 
     /**
      * @ORM\Column(type="smallint")
+     * @Groups("videogames_read_item")
+     * @Groups("review_browse")
      */
     private $lifetimeRating;
 
@@ -63,6 +78,7 @@ class Review
      * Many reviews to one videogame
      * 
      * @ORM\ManyToOne(targetEntity=Videogame::class, inversedBy="reviews")
+     * @Groups("review_browse")
      */
     private $videogame;
 
