@@ -15,6 +15,7 @@ class Review
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("videogames_read_reviews")
      */
     private $id;
 
@@ -22,6 +23,7 @@ class Review
      * @ORM\Column(type="string", length=255)
      * @Groups("videogames_read_item")
      * @Groups("reviews_browse")
+     * @Groups("videogames_read_reviews")
      */
     private $title;
 
@@ -29,6 +31,7 @@ class Review
      * @ORM\Column(type="text")
      * @Groups("videogames_read_item")
      * @Groups("reviews_browse")
+     * @Groups("videogames_read_reviews")
      */
     private $content;
 
@@ -36,6 +39,7 @@ class Review
      * @ORM\Column(type="string", length=50)
      * @Groups("videogames_read_item")
      * @Groups("reviews_browse")
+     * @Groups("videogames_read_reviews")
      */
     private $author;
 
@@ -43,6 +47,7 @@ class Review
      * @ORM\Column(type="datetime")
      * @Groups("videogames_read_item")
      * @Groups("reviews_browse")
+     * @Groups("videogames_read_reviews")
      */
     private $publicationDate;
 
@@ -50,6 +55,7 @@ class Review
      * @ORM\Column(type="smallint")
      * @Groups("videogames_read_item")
      * @Groups("reviews_browse")
+     * @Groups("videogames_read_reviews")
      */
     private $displayRating;
 
@@ -57,6 +63,7 @@ class Review
      * @ORM\Column(type="smallint")
      * @Groups("videogames_read_item")
      * @Groups("reviews_browse")
+     * @Groups("videogames_read_reviews")
      */
     private $gameplayRating;
 
@@ -64,6 +71,7 @@ class Review
      * @ORM\Column(type="smallint")
      * @Groups("videogames_read_item")
      * @Groups("reviews_browse")
+     * @Groups("videogames_read_reviews")
      */
     private $storyRating;
 
@@ -71,6 +79,7 @@ class Review
      * @ORM\Column(type="smallint")
      * @Groups("videogames_read_item")
      * @Groups("reviews_browse")
+     * @Groups("videogames_read_reviews")
      */
     private $lifetimeRating;
 
@@ -79,8 +88,7 @@ class Review
      * 
      * @ORM\ManyToOne(targetEntity=Videogame::class, inversedBy="reviews")
      * @Groups("reviews_browse")
-     * @Groups("videogames_browse")
-     * 
+     * @Groups("videogames_read_reviews")
      */
     private $videogame;
 

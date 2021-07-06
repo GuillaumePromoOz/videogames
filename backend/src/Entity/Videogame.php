@@ -18,6 +18,7 @@ class Videogame
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      * @Groups("videogames_browse")
+     * @Groups("videogames_read_reviews")
      */
     private $id;
 
@@ -25,6 +26,7 @@ class Videogame
      * @ORM\Column(type="string", length=50)
      * @Groups("videogames_browse")
      * @Groups("reviews_browse")
+     * @Groups("videogames_read_reviews")
      */
     private $name;
 
@@ -32,23 +34,27 @@ class Videogame
      * @ORM\Column(type="string", length=25)
      * @Groups("videogames_browse")
      * @Groups("reviews_browse")
+     * @Groups("videogames_read_reviews")
      */
     private $editor;
 
     /**
      * @ORM\Column(type="datetime")
      * @Groups("videogames_browse")
+     * @Groups("videogames_read_reviews")
      */
     private $createdAt;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
-     * @Groups("videogames_browse")
+     * @Groups("videogames_browse")  
+     * @Groups("videogames_read_reviews")   
      */
     private $updatedAt;
 
     /**
      * A ManyToOne relation was created from entity Review to entity Videogame
+     * A videogame can have many reviews, but only ONE videogame will belong to a specific review
      * 
      * @ORM\OneToMany(targetEntity=Review::class, mappedBy="videogame")
      * @Groups("videogames_read_item")
@@ -59,6 +65,7 @@ class Videogame
      * @ORM\ManyToOne(targetEntity=Platform::class, inversedBy="videogames")
      * @Groups("videogames_browse")
      * @Groups("reviews_browse")
+     * @Groups("videogames_read_reviews")
      */
     private $platform;
 

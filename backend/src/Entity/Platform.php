@@ -16,6 +16,7 @@ class Platform
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("videogames_read_reviews")
      */
     private $id;
 
@@ -23,12 +24,14 @@ class Platform
      * @ORM\Column(type="string", length=25)
      * @Groups("videogames_browse")
      * @Groups("reviews_browse")
+     * @Groups("videogames_read_reviews")
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=25)
      * @Groups("videogames_browse")
+     * @Groups("videogames_read_reviews")
      */
     private $publisher;
 

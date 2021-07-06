@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Videogame;
+use App\Repository\ReviewRepository;
 use App\Repository\VideogameRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -47,7 +48,8 @@ class VideogameController extends AbstractController
 
         return $this->json($videogame, 200, [], ['groups' => [
             'videogames_browse',
-            'videogames_read_item',
+            'videogames_read_item'
+
         ]]);
     }
 
@@ -73,7 +75,7 @@ class VideogameController extends AbstractController
         $reviews = $videogame->getReviews();
 
         return $this->json($reviews, 200, [], ['groups' => [
-            'videogames_read_item',
+            'videogames_read_reviews',
         ]]);
     }
 

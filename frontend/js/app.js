@@ -65,7 +65,7 @@ let app = {
         request.then(function(responseJSON) {
             return responseJSON.json();
         }).then(function(reviews) {
-            //console.log(reviews);
+            console.log(reviews);
 
 
             for(let review of reviews) {
@@ -83,9 +83,9 @@ let app = {
                 template.querySelector('.reviewGameplay').textContent=review.gameplayRating;
                 template.querySelector('.reviewScenario').textContent=review.storyRating;
                 template.querySelector('.reviewLifetime').textContent=review.lifetimeRating;
-                //template.querySelector('.reviewVideogame').textContent=review.videogame.name;
-                //template.querySelector('.reviewEditor').textContent=review.videogame.editor;
-                //template.querySelector('.reviewPlatform').textContent=review.platform.name;
+                template.querySelector('.reviewVideogame').textContent=review.videogame.name;
+                template.querySelector('.reviewEditor').textContent=review.videogame.editor;
+                template.querySelector('.reviewPlatform').textContent=review.videogame.platform.name;
 
                 //j'ajoute le template dans le dom : je cible la div avec l'id "review"
                 //et je lui injecte via la fonction appendChild le template dans la div qui a pour class "reviewContainer"

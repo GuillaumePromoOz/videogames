@@ -47,4 +47,23 @@ class ReviewRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    /**
+     * Inner join test
+     * 
+     */
+
+    public function findReviewsJoinedToVideogame($videogame)
+    {
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT r, v
+            FROM App\Entity\Review r
+            INNER JOIN r.videogame v
+            WHERE r.videogame = :videogame'
+        )->setParameter('videogame', $videogame);
+
+        return $query->getResult();
+    }
 }
