@@ -7,6 +7,8 @@ let app = {
 
         // On appelle la méthode s'occupant de charger tous les jeux vidéo
         app.loadVideoGames();
+
+        app.loadPlatforms();
     },
     addAllEventListeners: function() {
 
@@ -103,7 +105,6 @@ let app = {
         $('#addVideogameModal').modal('show');
     },
 
-    //! ETAPE 3 FAITES  EN (HAN) SOLO, SANS SUIVRE LA CORRECTION 
     //la fonction handleSubmitForm va nous permettre d'ajouter un nouveau jeu dans la bdd
 
     handleSubmitForm: function() {
@@ -113,16 +114,25 @@ let app = {
         let newGameNameElement = document.getElementById('inputName');
         //recuperation de valeur saisie par l'utilisateur dans l'input
         let newGameName = newGameNameElement.value;
+        console.log(newGameName);
 
         let newGameEditorElement = document.getElementById('inputEditor');
         let newGameEditor = newGameEditorElement.value;
+        console.log(newGameEditor);
+
+        // Récupérer la valeur du <select> (id du videogame)
+        let platformSelect = document.getElementById('inputPlatform');
+
+        //je récupère l'input de select
+        let platformId = platformSelect.value;
+        console.log(platformId);
 
         //appel à l'API
 
         let data = {
             'name': newGameName,
             'editor': newGameEditor,
-            'status': 1
+            'platform': platformId,
         };
 
         // On prépare les entêtes HTTP (headers) de la requête
@@ -148,7 +158,7 @@ let app = {
     },
 
     loadVideoGames: function() {
-         //! ETAPE 2 FAITES EN SOLO, SANS SUIVRE LA CORRECTION DE JULIEN
+          
         // Charger toutes les données des videogames
          let fetchOptions = {
             method: 'GET',
@@ -195,7 +205,56 @@ let app = {
 
         });
             
-    }
+    },
+
+    loadPlatforms: function() {
+        // Charger toutes les données des platforms
+         let fetchOptions = {
+            method: 'GET',
+            mode: 'cors',
+            cache: 'no-cache'
+        }
+
+        let url = 'http://localhost/Perso/videogames/backend/public/platforms';
+
+        let request = fetch(url, fetchOptions);
+
+        request.then(function(responseJSON) {
+            console.log(responseJSON);
+            return responseJSON.json();
+        }).then(function(platforms) {
+            //console.log(platforms);
+
+            // nous enregistrons les platforms dans un tableau associatif.
+            // l'id des catégories servira d'index
+            
+            let platformsListing = {};
+             
+            // pour chaque platform ; nous allons ajouter une option dans le select
+            
+            for(let platform of platforms) {
+                //voir commentaire plus haut sur tableaux asso
+                let platformId = platform.id;
+                platformsListing[platformId] = platform;
+
+                //nous ciblons le select dans le DOM
+                let selectElement = document.getElementById('inputPlatform');
+                //on crée un élément option
+                let optionElement = document.createElement('option');
+                //console.log(optionElement);
+                //on "customize" l'élément option
+                optionElement.textContent = platform.name; //le contenu texte de l'option
+                optionElement.setAttribute('value', platform.id);
+                
+
+                //on injecte l'option dans le select
+                selectElement.appendChild(optionElement);
+
+            }
+
+        });
+            
+    },
 };
 
 document.addEventListener('DOMContentLoaded', app.init);

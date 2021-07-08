@@ -62,7 +62,7 @@ class Videogame
     private $reviews;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Platform::class, inversedBy="videogames")
+     * @ORM\ManyToOne(targetEntity=Platform::class, inversedBy="videogames", cascade={"persist"})
      * @Groups("videogames_browse")
      * @Groups("reviews_browse")
      * @Groups("videogames_read_reviews")
@@ -71,6 +71,7 @@ class Videogame
 
     public function __construct()
     {
+        $this->createdAt = new \DateTime();
         $this->reviews = new ArrayCollection();
     }
 

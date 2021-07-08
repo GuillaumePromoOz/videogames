@@ -16,7 +16,9 @@ class Platform
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("videogames_browse")
      * @Groups("videogames_read_reviews")
+     * @Groups("platforms_browse")
      */
     private $id;
 
@@ -25,6 +27,7 @@ class Platform
      * @Groups("videogames_browse")
      * @Groups("reviews_browse")
      * @Groups("videogames_read_reviews")
+     * @Groups("platforms_browse")
      */
     private $name;
 
@@ -32,16 +35,19 @@ class Platform
      * @ORM\Column(type="string", length=25)
      * @Groups("videogames_browse")
      * @Groups("videogames_read_reviews")
+     * @Groups("platforms_browse")
      */
     private $publisher;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups("platforms_browse")
      */
     private $createdAt;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @Groups("platforms_browse")
      */
     private $updatedAt;
 
@@ -52,6 +58,7 @@ class Platform
 
     public function __construct()
     {
+        $this->createdAt = new \DateTime();
         $this->videogames = new ArrayCollection();
     }
 
