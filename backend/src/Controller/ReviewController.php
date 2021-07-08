@@ -15,7 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ReviewController extends AbstractController
 {
     /**
-     * @Route("/reviews", name="review")
+     * @Route("/reviews", name="review", methods="GET")
      */
     public function browse(ReviewRepository $reviewRepository): Response
     {
@@ -29,7 +29,7 @@ class ReviewController extends AbstractController
      * 
      * @Route("/reviews", name="reviews_add", methods="POST")
      */
-    public function add(Request $request, EntityManagerInterface $entityManager,  SerializerInterface $serializer, ValidatorInterface $validator)
+    public function add(Request $request, EntityManagerInterface $entityManager, SerializerInterface $serializer, ValidatorInterface $validator)
     {
         // We fetch the data sent via method POST into our Symfony Component "Request"
         // the content is in the body of the request

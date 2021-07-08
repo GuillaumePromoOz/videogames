@@ -12,26 +12,38 @@ let app = {
     },
     addAllEventListeners: function() {
 
-         //! ETAPE 1 FAITES EN SUIVANT LE PAS A PAS/CORRECTION DE JULIEN SUR LA BRANCH "ETAPE 1"
-        // On récupère l'élément <select> des jeux vidéo
+        //---- VIDEOGAME SELECT ----//
 
+        // On récupère l'élément <select> des jeux vidéo
         let select = document.getElementById('videogameId');
         //console.log(select);
         
         // On ajoute l'écouteur pour l'event "change", et on l'attache à la méthode app.handleVideogameSelected
         select.addEventListener('change', app.handleVideogameSelected);
 
+        //---- ADD VIDEOGAME BUTTON ----//
+
         // On récupère le bouton pour ajouter un jeu vidéo
         let addVideogameButtonElement = document.getElementById('btnAddVideogame');
         // On ajoute l'écouteur pour l'event "click"
         addVideogameButtonElement.addEventListener('click', app.handleClickToAddVideogame);
         
-        // TODO
+        //---- ADD REVIEW BUTTON ----//
 
-        //ciblage du modal
+        let addReviewButtonElement = document.getElementById('btnAddReview');
+        addReviewButtonElement.addEventListener('click', app.handleClickToAddReview);
+
+        //---- FORM SUBMISSION ----//
+
+        //ciblage du modal videogame
 
         let addVideogameModalElement = document.getElementById('addVideogameForm');
         addVideogameModalElement.addEventListener('submit', app.handleSubmitForm);
+
+        //ciblage du modal review
+
+        let addReviewModalElement = document.getElementById('addReviewForm');
+        addReviewModalElement.addEventListener('submit', app.handleReviewSubmitForm);
 
 
     },
@@ -99,13 +111,89 @@ let app = {
         
     },
 
-    handleClickToAddVideogame: function(evt) {
+    handleClickToAddVideogame: function() {
         // https://getbootstrap.com/docs/4.4/components/modal/#modalshow
         // jQuery obligatoire ici
         $('#addVideogameModal').modal('show');
     },
 
+     handleClickToAddReview: function() {
+        // https://getbootstrap.com/docs/4.4/components/modal/#modalshow
+        // jQuery obligatoire ici
+        $('#addReviewModal').modal('show');
+    },
+
     //la fonction handleSubmitForm va nous permettre d'ajouter un nouveau jeu dans la bdd
+
+     handleReviewSubmitForm: function() {
+        //alert('handle form ok!!')
+
+        //recuperation de l'input Name
+        let newReviewTitleElement = document.getElementById('inputTitle');
+        //recuperation de valeur saisie par l'utilisateur dans l'input
+        let newReviewTitle = newReviewTitleElement.value;
+
+        let newReviewContentElement = document.getElementById('inputContent');
+        let newReviewContent = newReviewContentElement.value;
+
+        let newReviewAuthorElement = document.getElementById('inputAuthor');
+        let newReviewAuthor = newReviewAuthorElement.value;
+
+        let newReviewDisplayElement = document.getElementById('inputDisplay');
+        let newReviewDisplay = newReviewDisplayElement.value;
+
+        let newReviewGameplayElement = document.getElementById('inputGameplay');
+        let newReviewGameplay = newReviewGameplayElement.value;
+    
+        let newReviewStoryElement = document.getElementById('inputStory');
+        let newReviewStory = newReviewStoryElement.value;
+
+        let newReviewLifetimeElement = document.getElementById('inputLifetime');
+        let newReviewLifetime = newReviewLifetimeElement.value;
+     
+        // Récupérer la valeur du <select> (id du videogame)
+        let videogameToReviewSelect = document.getElementById('inputVideogameToReview');
+
+        //je récupère l'input de select
+        let videogameId = videogameToReviewSelect.value;
+        console.log(videogameId);
+
+        //appel à l'API
+
+        let data = {
+            'title': newReviewTitle,
+            'content': newReviewContent,
+            'author': newReviewAuthor,
+            'display_rating': newReviewDisplay,
+            'gameplay_rating': newReviewGameplay,
+            'story_rating': newReviewStory,
+            'lifetime_rating': newReviewLifetime,
+            'videogame': videogameId,
+        };
+
+        // On prépare les entêtes HTTP (headers) de la requête
+        // afin de spécifier que les données sont en JSON
+        let myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        // On consomme l'API pour ajouter en DB
+        let fetchOptions = {
+        method: 'POST',
+        // On ajoute les headers dans les options
+        headers: myHeaders,
+        // On ajoute les données, encodée en JSON, dans le corps de la requête
+        body: JSON.stringify(data)
+    };
+
+    const url = 'http://localhost/Perso/videogames/backend/public/reviews';
+    fetch(url, fetchOptions)
+      .then(function(response) {  // la réponse été récupérée, on l'interprête en tant que json
+        return response.json();
+      })   
+        
+    },
+
+    // Method handleReviewSubmitForm allows us to add a new review to any game
 
     handleSubmitForm: function() {
         //alert('handle form ok!!')
@@ -188,18 +276,35 @@ let app = {
                 let videogameId = videogame.id;
                 videogamesListing[videogameId] = videogame;
 
+                 //-- VIDEOGAME LIST FOR SELECT --//
+
                 //nous ciblons le select dans le DOM
-                let selectElement = document.querySelector('.form-control');
+                let videogameListSelectElement = document.getElementById('videogameId');
                 //on crée un élément option
-                let optionElement = document.createElement('option');
+                let videogameListOptionElement = document.createElement('option');
                 //console.log(optionElement);
                 //on "customize" l'élément option
-                optionElement.textContent = videogame.name; //le contenu texte de l'option
-                optionElement.setAttribute('value', videogame.id);
+                videogameListOptionElement.textContent = videogame.name; //le contenu texte de l'option
+                videogameListOptionElement.setAttribute('value', videogame.id);
                 
 
                 //on injecte l'option dans le select
-                selectElement.appendChild(optionElement);
+                videogameListSelectElement.appendChild(videogameListOptionElement);
+
+                //-- VIDEOGAME LIST FOR ADD REVIEW MODAL --//
+
+                //nous ciblons le select dans le DOM
+                let videogameToReviewselectElement = document.getElementById('inputVideogameToReview');
+                //on crée un élément option
+                let videogameToReviewOptionElement = document.createElement('option');
+                //console.log(optionElement);
+                //on "customize" l'élément option
+                videogameToReviewOptionElement.textContent = videogame.name; //le contenu texte de l'option
+                videogameToReviewOptionElement.setAttribute('value', videogame.id);
+                
+
+                //on injecte l'option dans le select
+                videogameToReviewselectElement.appendChild(videogameToReviewOptionElement);
 
             }
 
