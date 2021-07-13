@@ -7,29 +7,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">-->
 
-    <title>Game Reviews</title>
+    <!-- Bootswatch CSS -->
+    <!-- Voir https://bootswatch.com/darkly/ -->
+    <!-- https://www.jsdelivr.com/package/npm/bootswatch dossier dist/darkly -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.6.0/dist/darkly/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/site.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="css/icon.png" />
+
+    <title>Game Reviewer</title>
 </head>
 
 <body>
-    <div class="container">
 
-        <h1>Videogames</h1>
+    <header class="container logo">
+        <div class="row">
+            <div class="col">
+                <img class="img-fluid" src="css/game.png" alt="logo-image">
+            </div>
+        </div>
+    </header>
 
+    <main class="container main-content">
+
+        <!-- Add/Review buttons -->
+        <div class="row">
+            <div class="col">
+                <div class="card add-game">
+                    <a class="btn btn-success btn-lg btn-block text-white" id="btnAddVideogame">Add Game</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="card add-review">
+                    <a class="btn btn-outline-success btn-lg btn-block" id="btnAddReview">Add Review</a>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Videogame select -->
         <div class="card">
             <div class="card-header">
-                Sélectionner un jeu vidéo
-                <a class="btn btn-dark btn-sm text-white float-right" id="btnAddVideogame">Add Game</a>
-            </div>
-            <div class="card-header">
-                Sélectionner un jeu vidéo
-                <a class="btn btn-dark btn-sm text-white float-right" id="btnAddReview">Add Review</a>
+                Select a videogame
             </div>
             <div class="card-body">
                 <select class="form-control" id="videogameId">
-                    <option value="0">choisissez</option>
+                    <option value="0">choose</option>
                 </select>
             </div>
         </div>
@@ -37,169 +69,170 @@
         <div id="review" class="my-4">
 
         </div>
-    </div>
 
-    <!-- Modal AddVideogame -->
-    <div class="modal fade" id="addVideogameModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <form action="" id="addVideogameForm">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Ajouter un jeu vidéo</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="inputName">Titre</label>
-                            <input type="text" class="form-control" id="inputName" name="name">
-                        </div>
-                        <div class="form-group">
-                            <label for="inputEditor">Editeur</label>
-                            <input type="text" class="form-control" id="inputEditor" name="editor">
-                        </div>
-                        <div class="form-group">
-                            <label for="inputPlatform">Platform</label>
-                            <select class="form-control" id="inputPlatform">
-                                <option value="0">choisissez</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                        <button type="submit" class="btn btn-primary">Valider</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
 
-    <!-- Modal AddReview -->
-    <div class="modal fade" id="addReviewModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <form action="" id="addReviewForm">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Add review</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="inputTitle">Title</label>
-                            <input type="text" class="form-control" id="inputTitle" name="title">
+        <!-- Modal AddVideogame -->
+        <div class="modal fade" id="addVideogameModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form action="" id="addVideogameForm">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Ajouter un jeu vidéo</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
-                        <div class="form-group">
-                            <label for="inputContent">Content</label>
-                            <input type="text" class="form-control" id="inputContent" name="content">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="inputName">Titre</label>
+                                <input type="text" class="form-control" id="inputName" name="name">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEditor">Editeur</label>
+                                <input type="text" class="form-control" id="inputEditor" name="editor">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPlatform">Platform</label>
+                                <select class="form-control" id="inputPlatform">
+                                    <option value="0">choisissez</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="inputAuthor">Author</label>
-                            <input type="text" class="form-control" id="inputAuthor" name="author">
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                            <button type="submit" class="btn btn-primary">Valider</button>
                         </div>
-                        <div class="form-group">
-                            <label for="inputDisplay">Rate Graphics</label>
-                            <input type="text" class="form-control" id="inputDisplay" name="display">
-                        </div>
-                        <div class="form-group">
-                            <label for="inputGameplay">Rate Gameplay</label>
-                            <input type="text" class="form-control" id="inputGameplay" name="gameplay">
-                        </div>
-                        <div class="form-group">
-                            <label for="inputStory">Rate Storyline</label>
-                            <input type="text" class="form-control" id="inputStory" name="story">
-                        </div>
-                        <div class="form-group">
-                            <label for="inputLifetime">Rate Lifetime</label>
-                            <input type="text" class="form-control" id="inputLifetime" name="lifetime">
-                        </div>
-                        <div class="form-group">
-                            <label for="inputVideogameToReview">Videogame</label>
-                            <select class="form-control" id="inputVideogameToReview">
-                                <option value="0">choisissez</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                        <button type="submit" class="btn btn-primary">Valider</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- Balise template contenant le code HTML à cloner pour créer un élément "review" -->
-    <template id="reviewTemplate">
-        <div class="reviewContainer py-4 border-bottom">
-            <div class="row mb-2">
-                <div class="col-9">
-                    <h2 class="reviewTitle"></h2>
-                    <small class="text-muted font-weight-light">Par <span class="reviewAuthor"></span>, le <span
-                            class="reviewPublication"></span></small>
-
-                    <p class="reviewText"></p>
-                </div>
-                <div class="col-3">
-                    <div class="card">
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item text-muted">Titre : <span
-                                    class="reviewVideogame text-dark"></span></li>
-                            <li class="list-group-item text-muted">&Eacute;diteur : <span
-                                    class="reviewEditor text-dark"></span></li>
-                            <li class="list-group-item text-muted">Plate-forme : <span
-                                    class="reviewPlatform text-dark"></span></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col">
-                    <div class="card border-primary text-center">
-                        <div class="card-header bg-primary text-white">
-                            Graphismes
-                        </div>
-                        <div class="card-body h2 font-weight-light">
-                            <span class="reviewDisplay display-4"></span> / 10
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card border-info text-center">
-                        <div class="card-header bg-info text-white">
-                            Gameplay
-                        </div>
-                        <div class="card-body h2 font-weight-light">
-                            <span class="reviewGameplay display-4"></span> / 10
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card border-success text-center">
-                        <div class="card-header bg-success text-white">
-                            Scénario
-                        </div>
-                        <div class="card-body h2 font-weight-light">
-                            <span class="reviewScenario display-4"></span> / 10
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card border-warning text-center">
-                        <div class="card-header bg-warning text-white">
-                            Durée de vie
-                        </div>
-                        <div class="card-body h2 font-weight-light">
-                            <span class="reviewLifetime display-4"></span> / 10
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
-    </template>
+
+        <!-- Modal AddReview -->
+        <div class="modal fade" id="addReviewModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form action="" id="addReviewForm">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Add review</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="inputTitle">Title</label>
+                                <input type="text" class="form-control" id="inputTitle" name="title">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputContent">Content</label>
+                                <input type="text" class="form-control" id="inputContent" name="content">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputAuthor">Author</label>
+                                <input type="text" class="form-control" id="inputAuthor" name="author">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputDisplay">Rate Graphics</label>
+                                <input type="text" class="form-control" id="inputDisplay" name="display">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputGameplay">Rate Gameplay</label>
+                                <input type="text" class="form-control" id="inputGameplay" name="gameplay">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputStory">Rate Storyline</label>
+                                <input type="text" class="form-control" id="inputStory" name="story">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputLifetime">Rate Lifetime</label>
+                                <input type="text" class="form-control" id="inputLifetime" name="lifetime">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputVideogameToReview">Videogame</label>
+                                <select class="form-control" id="inputVideogameToReview">
+                                    <option value="0">choisissez</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                            <button type="submit" class="btn btn-primary">Valider</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Balise template contenant le code HTML à cloner pour créer un élément "review" -->
+        <template id="reviewTemplate">
+            <div class="reviewContainer py-4 border-bottom">
+                <div class="row mb-2">
+                    <div class="col-9">
+                        <h2 class="reviewTitle"></h2>
+                        <small class="text-muted font-weight-light">Par <span class="reviewAuthor"></span>, le <span
+                                class="reviewPublication"></span></small>
+
+                        <p class="reviewText"></p>
+                    </div>
+                    <div class="col-3 d-none d-lg-block">
+                        <div class="card">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item text-muted">Titre : <span
+                                        class="reviewVideogame text-success"></span></li>
+                                <li class="list-group-item text-muted">&Eacute;diteur : <span
+                                        class="reviewEditor text-success"></span></li>
+                                <li class="list-group-item text-muted">Plate-forme : <span
+                                        class="reviewPlatform text-success"></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col col-xs-6 mb-2">
+                        <div class="card border-primary text-center">
+                            <div class="card-header bg-primary text-white">
+                                Graphismes
+                            </div>
+                            <div class="card-body h2 font-weight-light">
+                                <span class="reviewDisplay display-4"></span> / 10
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-xs-6  mb-2">
+                        <div class="card border-info text-center">
+                            <div class="card-header bg-info text-white">
+                                Gameplay
+                            </div>
+                            <div class="card-body h2 font-weight-light">
+                                <span class="reviewGameplay display-4"></span> / 10
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-xs-6  mb-2">
+                        <div class="card border-success text-center">
+                            <div class="card-header bg-success text-white">
+                                Scénario
+                            </div>
+                            <div class="card-body h2 font-weight-light">
+                                <span class="reviewScenario display-4"></span> / 10
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-xs-6  mb-2">
+                        <div class="card border-warning text-center">
+                            <div class="card-header bg-warning text-white">
+                                Durée de vie
+                            </div>
+                            <div class="card-body h2 font-weight-light">
+                                <span class="reviewLifetime display-4"></span> / 10
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </main>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

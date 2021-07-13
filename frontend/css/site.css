@@ -1,0 +1,17 @@
+body {
+  background-color: #222222;
+}
+
+.logo {
+  text-align: center;
+}
+
+.main-content {
+  margin-top: -3rem;
+}
+
+.add-review {
+  background-color: transparent;
+  margin-top: 0.2rem;
+  margin-bottom: 3rem;
+}
