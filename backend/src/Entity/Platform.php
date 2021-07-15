@@ -32,14 +32,6 @@ class Platform
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=25)
-     * @Groups("videogames_browse")
-     * @Groups("videogames_read_reviews")
-     * @Groups("platforms_browse")
-     */
-    private $publisher;
-
-    /**
      * @ORM\Column(type="datetime")
      * @Groups("platforms_browse")
      */
