@@ -6,12 +6,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">-->
-
     <!-- Bootswatch CSS -->
-    <!-- Voir https://bootswatch.com/darkly/ -->
+    <!-- @see https://bootswatch.com/darkly/ -->
     <!-- https://www.jsdelivr.com/package/npm/bootswatch dossier dist/darkly -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.6.0/dist/darkly/bootstrap.min.css">
 
@@ -40,7 +36,7 @@
         <div class="row">
             <div class="col">
                 <div class="card add-game">
-                    <a class="btn btn-success btn-lg btn-block text-white" id="btnAddVideogame">Add Game</a>
+                    <a class="btn btn-outline-success btn-lg btn-block" id="btnAddVideogame">Add Game</a>
                 </div>
             </div>
         </div>
@@ -55,13 +51,13 @@
 
 
         <!-- Videogame select -->
-        <div class="card">
+        <div class="card text-white bg-success">
             <div class="card-header">
                 Select a videogame
             </div>
             <div class="card-body">
                 <select class="form-control" id="videogameId">
-                    <option value="0">choose</option>
+                    <option value="0">-</option>
                 </select>
             </div>
         </div>
@@ -77,30 +73,30 @@
                 <div class="modal-content">
                     <form action="" id="addVideogameForm">
                         <div class="modal-header">
-                            <h5 class="modal-title">Ajouter un jeu vidéo</h5>
+                            <h5 class="modal-title">Add videogame</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
-                                <label for="inputName">Titre</label>
+                                <label for="inputName">Title</label>
                                 <input type="text" class="form-control" id="inputName" name="name">
                             </div>
                             <div class="form-group">
-                                <label for="inputEditor">Editeur</label>
+                                <label for="inputEditor">Publisher</label>
                                 <input type="text" class="form-control" id="inputEditor" name="editor">
                             </div>
                             <div class="form-group">
                                 <label for="inputPlatform">Platform</label>
                                 <select class="form-control" id="inputPlatform">
-                                    <option value="0">choisissez</option>
+                                    <option value="0">-</option>
                                 </select>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                            <button type="submit" class="btn btn-primary">Valider</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </form>
                 </div>
@@ -125,7 +121,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="inputContent">Content</label>
-                                <input type="text" class="form-control" id="inputContent" name="content">
+                                <textarea class="form-control" id="inputContent" rows="3"></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="inputAuthor">Author</label>
@@ -133,43 +129,91 @@
                             </div>
                             <div class="form-group">
                                 <label for="inputDisplay">Rate Graphics</label>
-                                <input type="text" class="form-control" id="inputDisplay" name="display">
+                                <select class="form-control" id="inputDisplay">
+                                    <option value="0">-</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="inputGameplay">Rate Gameplay</label>
-                                <input type="text" class="form-control" id="inputGameplay" name="gameplay">
+                                <select class="form-control" id="inputGameplay">
+                                    <option value="0">-</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="inputStory">Rate Storyline</label>
-                                <input type="text" class="form-control" id="inputStory" name="story">
+                                <select class="form-control" id="inputStory">
+                                    <option value="0">-</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="inputLifetime">Rate Lifetime</label>
-                                <input type="text" class="form-control" id="inputLifetime" name="lifetime">
+                                <select class="form-control" id="inputLifetime">
+                                    <option value="0">-</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="inputVideogameToReview">Videogame</label>
                                 <select class="form-control" id="inputVideogameToReview">
-                                    <option value="0">choisissez</option>
+                                    <option value="0">choose one</option>
                                 </select>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                            <button type="submit" class="btn btn-primary">Valider</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
 
-        <!-- Balise template contenant le code HTML à cloner pour créer un élément "review" -->
+        <!-- Template tag containing HTML code to be cloned when creating a "review" element -->
         <template id="reviewTemplate">
             <div class="reviewContainer py-4 border-bottom">
                 <div class="row mb-2">
                     <div class="col-9">
                         <h2 class="reviewTitle"></h2>
-                        <small class="text-muted font-weight-light">Par <span class="reviewAuthor"></span>, le <span
+                        <small class="text-muted font-weight-light">By <span class="reviewAuthor"></span>, On <span
                                 class="reviewPublication"></span></small>
 
                         <p class="reviewText"></p>
@@ -177,11 +221,11 @@
                     <div class="col-3 d-none d-lg-block">
                         <div class="card">
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item text-muted">Titre : <span
+                                <li class="list-group-item text-muted">Title : <span
                                         class="reviewVideogame text-success"></span></li>
-                                <li class="list-group-item text-muted">&Eacute;diteur : <span
+                                <li class="list-group-item text-muted">Publisher : <span
                                         class="reviewEditor text-success"></span></li>
-                                <li class="list-group-item text-muted">Plate-forme : <span
+                                <li class="list-group-item text-muted">Plateform : <span
                                         class="reviewPlatform text-success"></span></li>
                             </ul>
                         </div>
@@ -192,7 +236,7 @@
                     <div class="col col-xs-6 mb-2">
                         <div class="card border-primary text-center">
                             <div class="card-header bg-primary text-white">
-                                Graphismes
+                                Graphics
                             </div>
                             <div class="card-body h2 font-weight-light">
                                 <span class="reviewDisplay display-4"></span> / 10
@@ -212,7 +256,7 @@
                     <div class="col col-xs-6  mb-2">
                         <div class="card border-success text-center">
                             <div class="card-header bg-success text-white">
-                                Scénario
+                                Storyline
                             </div>
                             <div class="card-body h2 font-weight-light">
                                 <span class="reviewScenario display-4"></span> / 10
@@ -222,7 +266,7 @@
                     <div class="col col-xs-6  mb-2">
                         <div class="card border-warning text-center">
                             <div class="card-header bg-warning text-white">
-                                Durée de vie
+                                Lifetime
                             </div>
                             <div class="card-body h2 font-weight-light">
                                 <span class="reviewLifetime display-4"></span> / 10
@@ -246,7 +290,7 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
     </script>
 
-    <!-- Notre script JS -->
+    <!-- Our script JS -->
     <script src="js/app.js"></script>
 </body>
 
