@@ -75,6 +75,9 @@ class AppFixtures extends Fixture
             // One videogame
             $game = new Videogame();
 
+            //!\ As $videogames is a multidimensional array (see Provider)...
+            //! the main/first array's keys are numbers and its values are the second array's keys ("name", "editor",...)
+            //! we need a second foreach to iterate over the second array in order to retrieve the CONTENT
             foreach ($content as $key => $value) {
                 if ($key === 'name') {
                     $game->setName($value);
