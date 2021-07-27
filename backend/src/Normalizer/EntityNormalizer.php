@@ -21,11 +21,8 @@ class EntityNormalizer implements DenormalizerInterface
     }
 
     /**
-     * Doit-on appeler la méthode denormalize ?
-     * 
-     * Oui, si l'objet fourni est de type App\Entity et que la donnée fournie est un entier
-     * $data = l'id du genre dans le JSON
-     * $type = le FQCN de la classe
+     * $data = id of corresponding platform and/or videogame in the JSON
+     * $type = FQCN (full qualified class name) of the class (server_name.[database_name].[schema_name].object_name)
      * 
      * @inheritDoc
      */
@@ -39,7 +36,7 @@ class EntityNormalizer implements DenormalizerInterface
      */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        // Va chercher l'entité qui correspond à l'id fourni
+        // Fetches the entity corresponding to the give ID
         // Doc : This is just a convenient shortcut for getRepository($className)->find($id)
         return $this->em->find($class, $data);
     }
