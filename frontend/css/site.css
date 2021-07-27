@@ -4,6 +4,7 @@ body {
 
 .logo {
   text-align: center;
+  margin-top: -1.5rem;
 }
 
 .main-content {
@@ -12,6 +13,7 @@ body {
 
 .add-game {
   background-color: transparent;
+  margin-top: -3rem;
 }
 
 .add-review {
