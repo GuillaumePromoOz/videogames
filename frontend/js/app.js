@@ -70,7 +70,7 @@ let app = {
 
         // We specify the endpoint, that is, the GET route that not just the game but also its id AND the reviews associated with it
 
-        let url = 'http://localhost/Perso/videogames/backend/public/videogames/' + id + '/reviews';
+        let url = 'http://54.164.45.92/videogames/backend/public/videogames/' + id + '/reviews';
 
         let request = fetch(url, fetchOptions);
 
@@ -155,7 +155,7 @@ let app = {
         body: JSON.stringify(data)
     };
 
-    const url = 'http://localhost/Perso/videogames/backend/public/videogames';
+    const url = 'http://54.164.45.92/videogames/backend/public/videogames';
     fetch(url, fetchOptions)
       .then(function(response) {  // response has been retrieved, then interpreted as JSON
         return response.json();
@@ -218,7 +218,7 @@ let app = {
         body: JSON.stringify(data)
     };
 
-    const url = 'http://localhost/Perso/videogames/backend/public/reviews';
+    const url = 'http://54.164.45.92/videogames/backend/public/reviews';
     fetch(url, fetchOptions)
       .then(function(response) {  
         return response.json();
@@ -235,7 +235,7 @@ let app = {
             cache: 'no-cache'
         }
 
-        let url = 'http://localhost/Perso/videogames/backend/public/videogames';
+        let url = 'http://54.164.45.92/videogames/backend/public/videogames';
 
         let request = fetch(url, fetchOptions);
 
@@ -295,7 +295,7 @@ let app = {
             cache: 'no-cache'
         }
 
-        let url = 'http://localhost/Perso/videogames/backend/public/platforms';
+        let url = 'http://54.164.45.92/videogames/backend/public/platforms';
 
         let request = fetch(url, fetchOptions);
 
